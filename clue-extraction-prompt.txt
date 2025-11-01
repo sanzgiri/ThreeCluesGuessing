@@ -1,0 +1,111 @@
+WIKIPEDIA CLUE EXTRACTION PROMPT FOR THREE CLUES GAME
+=====================================================
+
+Use this prompt with ChatGPT, Claude, or any LLM to extract interesting, 
+obscure clues from Wikipedia for the Three Clues guessing game.
+
+---
+
+PROMPT:
+-------
+
+I need you to create three progressively revealing clues for [PERSON NAME] for a guessing game. 
+Read their Wikipedia page and create clues that follow this exact pattern:
+
+CLUE 1 (Most Obscure - Hardest to guess from):
+- Should be an interesting, lesser-known fact that's surprising or unusual
+- Avoid obvious details like their main profession or most famous work
+- Look for: childhood details, early career, unique hobbies, surprising connections, 
+  lesser-known achievements, unusual circumstances, or quirky personal facts
+- Should make people think "That could be several people..."
+
+CLUE 2 (Medium Difficulty):
+- More specific but still not giving it away
+- Can mention their field/profession but not their most famous work
+- Look for: secondary achievements, notable works that aren't #1, relationships 
+  with other famous people, significant life events, or career highlights
+- Should narrow it down to maybe 2-5 possible people
+
+CLUE 3 (Least Obscure - Easiest to guess from):
+- Unmistakable identifier that makes the answer obvious
+- Can include: their most famous work, iconic quotes, distinctive physical features, 
+  name hints, or universally known facts
+- Should make people say "Oh, of course!"
+
+FORMAT:
+Write in first person ("I...") and make each clue one clear sentence.
+
+EXAMPLE FOR ALBERT EINSTEIN:
+Clue 1: I failed my first entrance exam to a prestigious university and had to 
+        attend a different school to prepare.
+Clue 2: I published four groundbreaking papers in 1905, a year scientists call 
+        my "miracle year."
+Clue 3: My equation E=mc² is the most famous formula in physics, and I won the 
+        Nobel Prize in 1921.
+
+Now create three clues for: [PERSON NAME]
+
+---
+
+USAGE INSTRUCTIONS:
+-------------------
+
+1. Pick a person from Wikipedia
+2. Copy the prompt above and replace [PERSON NAME] with your chosen person
+3. Paste into an LLM (ChatGPT, Claude, Gemini, etc.)
+4. Review the clues - make sure they follow the obscure → obvious pattern
+5. Add to client/src/data/people.ts (or people.json if using JSON format)
+
+PRO TIPS FOR GREAT CLUES:
+--------------------------
+
+CLUE 1 (Most Obscure) - Look for:
+- Early life struggles or unusual childhood facts
+- Failed attempts before success
+- Lesser-known collaborations
+- Surprising hobbies or side projects
+- Unusual physical conditions or health issues
+- Early career rejection stories
+
+CLUE 2 (Medium) - Look for:
+- Secondary famous works (not the #1 hit)
+- Awards and recognition
+- Relationships with other famous people
+- Career-defining moments (not the most famous one)
+- Significant but not universally known contributions
+
+CLUE 3 (Obvious) - Use:
+- Most famous work/achievement
+- Iconic quotes or catchphrases
+- Name hints or wordplay
+- Physical appearance everyone knows
+- Record-breaking achievements
+- Universal cultural references
+
+FORMAT FOR ADDING TO people.ts:
+--------------------------------
+
+{
+  id: 'unique_id_001',
+  name: 'Person Full Name',
+  category: 'Historical Figure',  // Or Actor, Athlete, Character
+  clues: [
+    'Clue 1: Most obscure fact...',
+    'Clue 2: More specific detail...',
+    'Clue 3: Obvious identifier...'
+  ],
+}
+
+FORMAT FOR ADDING TO people.json:
+----------------------------------
+
+{
+  "id": "unique_id_001",
+  "name": "Person Full Name",
+  "category": "Historical Figure",
+  "clues": [
+    "Clue 1: Most obscure fact...",
+    "Clue 2: More specific detail...",
+    "Clue 3: Obvious identifier..."
+  ]
+}
