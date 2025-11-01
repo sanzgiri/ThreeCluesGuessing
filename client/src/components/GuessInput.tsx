@@ -31,17 +31,25 @@ export default function GuessInput({ onSubmit, disabled = false }: GuessInputPro
 
   const handleSubmit = (value: string) => {
     if (value.trim()) {
-      onSubmit(value.trim());
-      setGuess('');
-      setSuggestions([]);
+      const trimmedValue = value.trim();
+      // Hide suggestions first to prevent UI flicker
       setShowSuggestions(false);
+      setSuggestions([]);
+      // Call parent submit handler
+      onSubmit(trimmedValue);
+      // Clear input after submission
+      setGuess('');
     }
   };
 
   const handleSuggestionClick = (name: string) => {
-    setGuess(name);
+    // Hide suggestions immediately
     setShowSuggestions(false);
-    handleSubmit(name);
+    setSuggestions([]);
+    // Submit directly without setting state first (prevents race condition)
+    onSubmit(name.trim());
+    // Clear input
+    setGuess('');
   };
 
   return (
