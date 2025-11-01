@@ -38,7 +38,8 @@ three-clues/
 │   │   │   ├── GameRound.tsx           # Active game session
 │   │   │   └── not-found.tsx           # 404 page
 │   │   ├── data/                # Static data
-│   │   │   └── people.ts               # 100+ person database
+│   │   │   ├── people.json             # 72 person database (JSON format)
+│   │   │   └── peopleHelpers.ts        # Helper functions for people data
 │   │   ├── lib/                 # Utilities
 │   │   │   ├── storage.ts              # localStorage helpers
 │   │   │   └── queryClient.ts          # React Query config
@@ -138,13 +139,13 @@ interface UserStats {
 2. **Clue 2** (Specific): Major accomplishments, notable works, key relationships
 3. **Clue 3** (Obvious): Name hints, iconic quotes, unmistakable identifiers
 
-**Categories** (as of MVP):
-- **Historical Figure**: 40+ entries
-- **Actor**: 15+ entries
-- **Athlete**: 15+ entries
-- **Character**: 15+ entries
+**Categories**:
+- **Historical Figure**: Multiple entries
+- **Actor**: Multiple entries
+- **Athlete**: Multiple entries
+- **Character**: Multiple entries
 
-**Total Content**: 100+ unique people with validated, non-ambiguous clues
+**Total Content**: 72 unique people stored in `client/src/data/people.json`
 
 ## Game Flow
 
@@ -255,19 +256,19 @@ Result Screen
 
 To add a new person to the game:
 
-1. Open `client/src/data/people.ts`
-2. Add a new entry to the `people` array:
+1. Open `client/src/data/people.json`
+2. Add a new entry to the JSON array:
 
-```typescript
+```json
 {
-  id: 'unique_001',               // Unique ID
-  name: 'Full Name',
-  category: 'Historical Figure',  // Or Actor, Athlete, Character
-  clues: [
-    'Broad clue about era, field, and general impact',
-    'Specific achievements, works, or relationships',
-    'Obvious hint with name or unmistakable identifier'
-  ],
+  "id": "unique_001",
+  "name": "Full Name",
+  "category": "Historical Figure",
+  "clues": [
+    "Broad clue about era, field, and general impact",
+    "Specific achievements, works, or relationships",
+    "Obvious hint with name or unmistakable identifier"
+  ]
 }
 ```
 
@@ -275,6 +276,8 @@ To add a new person to the game:
    - Can multiple people fit Clue 1? (Should be possible but narrow)
    - Does Clue 2 significantly narrow the options?
    - Is Clue 3 unmistakable?
+
+**Note**: The data is stored in JSON format for easy editing. A helper file (`peopleHelpers.ts`) loads the JSON and provides utility functions like `getRandomPerson()`, `getDailyPerson()`, and `findPersonByName()`.
 
 ### Content Quality Gates
 
