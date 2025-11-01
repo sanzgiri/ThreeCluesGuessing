@@ -143,9 +143,9 @@ export default function GameRound() {
       )}
       
       <div className="max-w-3xl mx-auto px-4 py-6">
-        <div className="flex items-center justify-between mb-8">
+        <header className="flex items-center justify-between mb-8">
           <div className="flex items-center gap-4">
-            <span className="text-sm font-medium text-muted-foreground uppercase tracking-wide">
+            <span className="text-sm font-medium text-muted-foreground uppercase tracking-wide" role="status" aria-label={`Category: ${person.category}`}>
               {person.category}
             </span>
           </div>
@@ -154,13 +154,14 @@ export default function GameRound() {
             size="icon"
             onClick={() => setLocation('/')}
             data-testid="button-close"
+            aria-label="Close game and return home"
           >
             <X className="w-5 h-5" />
           </Button>
-        </div>
+        </header>
 
         {phase !== 'result' && (
-          <div className="mb-8">
+          <div className="mb-8" role="status" aria-live="polite" aria-label={`Clue ${currentClue + 1} of 3`}>
             <ProgressIndicator currentStep={currentClue} totalSteps={3} />
           </div>
         )}
@@ -188,6 +189,7 @@ export default function GameRound() {
                     size="lg"
                     onClick={handleRevealNextClue}
                     data-testid="button-reveal-clue"
+                    aria-label={`Reveal clue ${currentClue + 2} of 3`}
                   >
                     Reveal Next Clue
                     <ArrowRight className="w-4 h-4 ml-2" />
@@ -210,6 +212,7 @@ export default function GameRound() {
                   size="lg"
                   onClick={handlePlayAgain}
                   data-testid="button-play-again"
+                  aria-label={mode === 'arcade' ? 'Start a new arcade game' : 'Return to home page'}
                 >
                   {mode === 'arcade' ? 'Play Again' : 'Back to Home'}
                 </Button>

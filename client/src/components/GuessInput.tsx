@@ -58,15 +58,25 @@ export default function GuessInput({ onSubmit, disabled = false }: GuessInputPro
             className="text-lg px-4 py-3"
             data-testid="input-guess"
             autoComplete="off"
+            autoFocus
+            aria-label="Enter your guess for the person"
+            aria-describedby={showSuggestions ? "guess-suggestions" : undefined}
           />
           {showSuggestions && (
-            <div className="absolute top-full left-0 right-0 mt-1 bg-popover border border-popover-border rounded-lg shadow-lg max-h-60 overflow-y-auto z-50">
+            <div 
+              id="guess-suggestions"
+              role="listbox"
+              aria-label="Suggested names"
+              className="absolute top-full left-0 right-0 mt-1 bg-popover border border-popover-border rounded-lg shadow-lg max-h-60 overflow-y-auto z-50"
+            >
               {suggestions.map((name, index) => (
                 <button
                   key={index}
+                  role="option"
                   onClick={() => handleSuggestionClick(name)}
                   className="w-full px-4 py-3 text-left hover-elevate active-elevate-2 text-sm"
                   data-testid={`suggestion-${index}`}
+                  aria-label={`Select ${name}`}
                 >
                   {name}
                 </button>
@@ -80,6 +90,7 @@ export default function GuessInput({ onSubmit, disabled = false }: GuessInputPro
           size="lg"
           className="px-8"
           data-testid="button-submit-guess"
+          aria-label="Submit your guess"
         >
           Submit
         </Button>

@@ -26,14 +26,14 @@ export default function Home() {
   return (
     <div className="min-h-screen bg-background">
       <div className="max-w-4xl mx-auto px-4 py-8 md:py-12">
-        <div className="text-center mb-12">
+        <header className="text-center mb-12">
           <h1 className="font-display text-5xl md:text-6xl font-bold mb-4 bg-gradient-to-r from-primary to-primary/60 bg-clip-text text-transparent">
             Three Clues
           </h1>
           <p className="text-lg md:text-xl text-muted-foreground">
             Guess the person from three progressively specific clues
           </p>
-        </div>
+        </header>
 
         <div className="mb-12">
           <StatsCard
