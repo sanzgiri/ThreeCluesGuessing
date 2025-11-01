@@ -201,6 +201,526 @@ export const people: Person[] = [
       'I was called "The Chosen One" in high school and my first name is LeBron.'
     ],
   },
+  {
+    id: 'hamilton_001',
+    name: 'Alexander Hamilton',
+    category: 'Historical Figure',
+    clues: [
+      'I was a founding father of the United States and helped shape its financial system.',
+      'I wrote most of The Federalist Papers and served as the first Secretary of the Treasury.',
+      'I died in a duel with Aaron Burr, and there\'s a hit Broadway musical about my life.'
+    ],
+  },
+  {
+    id: 'lincoln_001',
+    name: 'Abraham Lincoln',
+    category: 'Historical Figure',
+    clues: [
+      'I served as U.S. President during the Civil War and worked to preserve the Union.',
+      'I issued the Emancipation Proclamation and gave the Gettysburg Address.',
+      'I was assassinated at Ford\'s Theatre and am featured on the penny and five-dollar bill.'
+    ],
+  },
+  {
+    id: 'tubman_001',
+    name: 'Harriet Tubman',
+    category: 'Historical Figure',
+    clues: [
+      'I escaped slavery and then returned South repeatedly to help others find freedom.',
+      'I was known as "Moses" and conducted the Underground Railroad.',
+      'During the Civil War, I served as a scout and spy for the Union Army.'
+    ],
+  },
+  {
+    id: 'mlk_001',
+    name: 'Martin Luther King Jr.',
+    category: 'Historical Figure',
+    clues: [
+      'I was a Baptist minister who became the face of the civil rights movement.',
+      'I gave the famous "I Have a Dream" speech at the March on Washington in 1963.',
+      'I won the Nobel Peace Prize and have a national holiday named after me in January.'
+    ],
+  },
+  {
+    id: 'rosa_001',
+    name: 'Rosa Parks',
+    category: 'Historical Figure',
+    clues: [
+      'My act of defiance became a pivotal moment in the civil rights movement.',
+      'I refused to give up my bus seat in Montgomery, Alabama in 1955.',
+      'My arrest sparked the Montgomery Bus Boycott that lasted over a year.'
+    ],
+  },
+  {
+    id: 'newton_001',
+    name: 'Isaac Newton',
+    category: 'Historical Figure',
+    clues: [
+      'I formulated the laws of motion and universal gravitation in the 17th century.',
+      'Legend says an apple falling from a tree inspired my theory of gravity.',
+      'I also made major contributions to mathematics, inventing calculus independently.'
+    ],
+  },
+  {
+    id: 'darwin_001',
+    name: 'Charles Darwin',
+    category: 'Historical Figure',
+    clues: [
+      'I traveled on the HMS Beagle and studied species in the Galápagos Islands.',
+      'I proposed the theory of evolution through natural selection.',
+      'My book "On the Origin of Species" revolutionized our understanding of life on Earth.'
+    ],
+  },
+  {
+    id: 'tesla_001',
+    name: 'Nikola Tesla',
+    category: 'Historical Figure',
+    clues: [
+      'I was an inventor who pioneered alternating current electricity systems.',
+      'I worked briefly for Thomas Edison before going my own way.',
+      'A modern electric car company is named after me.'
+    ],
+  },
+  {
+    id: 'picasso_001',
+    name: 'Pablo Picasso',
+    category: 'Historical Figure',
+    clues: [
+      'I was a Spanish artist who co-founded the Cubist movement.',
+      'I had distinct artistic periods including the Blue Period and Rose Period.',
+      'My painting "Guernica" depicts the horrors of war, and I lived most of my life in France.'
+    ],
+  },
+  {
+    id: 'vangogh_001',
+    name: 'Vincent van Gogh',
+    category: 'Historical Figure',
+    clues: [
+      'I was a Dutch post-impressionist painter who struggled with mental illness.',
+      'I only sold one painting during my lifetime but am now world-famous.',
+      'My works include "Starry Night" and "Sunflowers", and I famously cut off part of my ear.'
+    ],
+  },
+  {
+    id: 'hawking_001',
+    name: 'Stephen Hawking',
+    category: 'Historical Figure',
+    clues: [
+      'I was a theoretical physicist who studied black holes and cosmology.',
+      'I had ALS and communicated through a speech-generating device.',
+      'I wrote "A Brief History of Time" and appeared in The Simpsons and Star Trek.'
+    ],
+  },
+  {
+    id: 'malala_001',
+    name: 'Malala Yousafzai',
+    category: 'Historical Figure',
+    clues: [
+      'I am a Pakistani activist for female education who survived an assassination attempt.',
+      'I became the youngest Nobel Prize laureate at age 17.',
+      'My memoir is called "I Am Malala" and I continue advocating for girls\' education worldwide.'
+    ],
+  },
+  {
+    id: 'mandela_002',
+    name: 'Ruth Bader Ginsburg',
+    category: 'Historical Figure',
+    clues: [
+      'I was a U.S. Supreme Court Justice and pioneering advocate for gender equality.',
+      'I became a cultural icon with the nickname "Notorious R.B.G."',
+      'I served on the Supreme Court for 27 years and was only the second woman appointed.'
+    ],
+  },
+  {
+    id: 'jobs_001',
+    name: 'Steve Jobs',
+    category: 'Historical Figure',
+    clues: [
+      'I co-founded a major technology company and revolutionized personal computing.',
+      'I introduced the iPhone, iPad, and helped create Pixar Animation Studios.',
+      'I was known for product launches wearing a black turtleneck and jeans.'
+    ],
+  },
+  {
+    id: 'gates_001',
+    name: 'Bill Gates',
+    category: 'Historical Figure',
+    clues: [
+      'I co-founded Microsoft and helped make personal computers accessible to everyone.',
+      'I was the world\'s richest person for many years.',
+      'I now focus on philanthropy through my foundation, working on global health and poverty.'
+    ],
+  },
+  {
+    id: 'depp_001',
+    name: 'Johnny Depp',
+    category: 'Actor',
+    clues: [
+      'I\'m known for playing eccentric and quirky characters in major film franchises.',
+      'I portrayed Captain Jack Sparrow in the Pirates of the Caribbean series.',
+      'I also played Edward Scissorhands, Willy Wonka, and the Mad Hatter.'
+    ],
+  },
+  {
+    id: 'streep_001',
+    name: 'Meryl Streep',
+    category: 'Actor',
+    clues: [
+      'I have been nominated for more Academy Awards than any other actor in history.',
+      'I\'ve played diverse roles including Margaret Thatcher, Julia Child, and Miranda Priestly.',
+      'I have won three Oscars and am considered one of the greatest actresses of all time.'
+    ],
+  },
+  {
+    id: 'denzel_001',
+    name: 'Denzel Washington',
+    category: 'Actor',
+    clues: [
+      'I\'m a two-time Academy Award winner known for powerful dramatic performances.',
+      'I starred in Training Day, Malcolm X, and The Equalizer series.',
+      'I often portray strong, principled characters fighting for justice.'
+    ],
+  },
+  {
+    id: 'hanks_001',
+    name: 'Tom Hanks',
+    category: 'Actor',
+    clues: [
+      'I\'ve played an astronaut, a soldier, a castaway, and a man with a low IQ.',
+      'I won back-to-back Oscars for Philadelphia and Forrest Gump.',
+      'I also starred in Saving Private Ryan, Cast Away, and voiced Woody in Toy Story.'
+    ],
+  },
+  {
+    id: 'dicaprio_001',
+    name: 'Leonardo DiCaprio',
+    category: 'Actor',
+    clues: [
+      'I became a teen heartthrob in the 1990s and am now an environmental activist.',
+      'I finally won my first Oscar for The Revenant after multiple nominations.',
+      'I starred in Titanic, Inception, The Wolf of Wall Street, and often work with Martin Scorsese.'
+    ],
+  },
+  {
+    id: 'lawrence_001',
+    name: 'Jennifer Lawrence',
+    category: 'Actor',
+    clues: [
+      'I won an Oscar at age 22 and became the youngest person to accrue four nominations by 25.',
+      'I played Katniss Everdeen in The Hunger Games franchise.',
+      'I won my Oscar for Silver Linings Playbook and also played Mystique in X-Men.'
+    ],
+  },
+  {
+    id: 'freeman_001',
+    name: 'Morgan Freeman',
+    category: 'Actor',
+    clues: [
+      'My distinctive deep voice has narrated countless documentaries and films.',
+      'I played God in Bruce Almighty and Red in The Shawshank Redemption.',
+      'I won an Oscar for Million Dollar Baby and often play wise mentor characters.'
+    ],
+  },
+  {
+    id: 'jolie_001',
+    name: 'Angelina Jolie',
+    category: 'Actor',
+    clues: [
+      'I\'m an Oscar-winning actress and humanitarian who works extensively with refugees.',
+      'I played Lara Croft in Tomb Raider and starred in Mr. & Mrs. Smith.',
+      'I won my Oscar for Girl, Interrupted and am also a film director.'
+    ],
+  },
+  {
+    id: 'rock_001',
+    name: 'Dwayne Johnson',
+    category: 'Actor',
+    clues: [
+      'I was a professional wrestler before becoming one of Hollywood\'s highest-paid actors.',
+      'I\'m known as "The Rock" and starred in the Fast & Furious franchise.',
+      'I also star in Jumanji films and played the demigod Maui in Moana.'
+    ],
+  },
+  {
+    id: 'cruise_001',
+    name: 'Tom Cruise',
+    category: 'Actor',
+    clues: [
+      'I\'m known for doing my own dangerous stunts in action films.',
+      'I\'ve played Ethan Hunt in the Mission: Impossible franchise for decades.',
+      'I also starred in Top Gun, Jerry Maguire, and Rain Man.'
+    ],
+  },
+  {
+    id: 'saldana_001',
+    name: 'Zoe Saldana',
+    category: 'Actor',
+    clues: [
+      'I\'ve starred in three of the highest-grossing film franchises of all time.',
+      'I played Gamora in Guardians of the Galaxy and Neytiri in Avatar.',
+      'I also portrayed Uhura in the Star Trek reboot films.'
+    ],
+  },
+  {
+    id: 'downey_001',
+    name: 'Robert Downey Jr.',
+    category: 'Actor',
+    clues: [
+      'I launched the Marvel Cinematic Universe and became one of the highest-paid actors.',
+      'I portrayed Tony Stark/Iron Man in over 10 films.',
+      'I also played Sherlock Holmes and won a Golden Globe for my MCU role.'
+    ],
+  },
+  {
+    id: 'federer_001',
+    name: 'Roger Federer',
+    category: 'Athlete',
+    clues: [
+      'I\'m a Swiss tennis player considered one of the greatest of all time.',
+      'I won 20 Grand Slam singles titles and held the world No. 1 ranking for 310 weeks.',
+      'I\'m known for my elegant playing style and sportsmanship, and I retired in 2022.'
+    ],
+  },
+  {
+    id: 'brady_001',
+    name: 'Tom Brady',
+    category: 'Athlete',
+    clues: [
+      'I\'m an NFL quarterback who has won more Super Bowls than any other player.',
+      'I won seven Super Bowl championships with the Patriots and Buccaneers.',
+      'I played until age 45 and am considered the greatest quarterback in NFL history.'
+    ],
+  },
+  {
+    id: 'phelps_001',
+    name: 'Michael Phelps',
+    category: 'Athlete',
+    clues: [
+      'I\'m an American swimmer and the most decorated Olympian of all time.',
+      'I won 28 Olympic medals, including 23 golds, across five Olympic Games.',
+      'I won eight gold medals at the 2008 Beijing Olympics, breaking records.'
+    ],
+  },
+  {
+    id: 'biles_001',
+    name: 'Simone Biles',
+    category: 'Athlete',
+    clues: [
+      'I\'m an American gymnast considered the greatest of all time in my sport.',
+      'I have won over 30 Olympic and World Championship medals combined.',
+      'Several gymnastic moves are named after me, and I\'ve spoken openly about mental health.'
+    ],
+  },
+  {
+    id: 'gretzky_001',
+    name: 'Wayne Gretzky',
+    category: 'Athlete',
+    clues: [
+      'I\'m a Canadian hockey player known as "The Great One."',
+      'I hold over 60 NHL records and won four Stanley Cups with the Edmonton Oilers.',
+      'My number 99 jersey is retired league-wide in the NHL.'
+    ],
+  },
+  {
+    id: 'ali_001',
+    name: 'Muhammad Ali',
+    category: 'Athlete',
+    clues: [
+      'I was a heavyweight boxing champion known for my speed, footwork, and confidence.',
+      'I said "I am the greatest" and "float like a butterfly, sting like a bee."',
+      'I refused military service during the Vietnam War and was a civil rights activist.'
+    ],
+  },
+  {
+    id: 'rapinoe_001',
+    name: 'Megan Rapinoe',
+    category: 'Athlete',
+    clues: [
+      'I\'m an American soccer player and two-time World Cup champion.',
+      'I won the Golden Boot and Golden Ball at the 2019 Women\'s World Cup.',
+      'I\'m known for my activism for LGBTQ+ rights and equal pay in sports.'
+    ],
+  },
+  {
+    id: 'ronaldo_001',
+    name: 'Cristiano Ronaldo',
+    category: 'Athlete',
+    clues: [
+      'I\'m a Portuguese footballer who has played for Manchester United, Real Madrid, and Juventus.',
+      'I\'ve won five Ballon d\'Or awards and am one of the top scorers in football history.',
+      'I\'m known for my athletic physique, headers, and free kicks, with the nickname CR7.'
+    ],
+  },
+  {
+    id: 'woods_001',
+    name: 'Tiger Woods',
+    category: 'Athlete',
+    clues: [
+      'I\'m a golfer who dominated the sport in the late 1990s and 2000s.',
+      'I\'ve won 15 major championships and completed the "Tiger Slam" in 2000-2001.',
+      'I came back from injuries to win the 2019 Masters, and my first name comes from a nickname.'
+    ],
+  },
+  {
+    id: 'naomi_001',
+    name: 'Naomi Osaka',
+    category: 'Athlete',
+    clues: [
+      'I\'m a Japanese tennis player who has won four Grand Slam singles titles.',
+      'I\'ve been ranked world No. 1 and am known for speaking out about mental health.',
+      'I represent Japan in the Olympics and have been a powerful voice for social justice.'
+    ],
+  },
+  {
+    id: 'harry_001',
+    name: 'Harry Potter',
+    category: 'Character',
+    clues: [
+      'I\'m a young wizard who discovers my magical heritage on my 11th birthday.',
+      'I attended Hogwarts School and fought against the dark wizard who killed my parents.',
+      'I have a lightning bolt scar on my forehead and was created by J.K. Rowling.'
+    ],
+  },
+  {
+    id: 'batman_001',
+    name: 'Batman',
+    category: 'Character',
+    clues: [
+      'I\'m a billionaire who fights crime using gadgets, martial arts, and detective skills.',
+      'I have no superpowers but protect Gotham City with the help of Robin and Alfred.',
+      'My parents were murdered when I was a child, and my alter ego is Bruce Wayne.'
+    ],
+  },
+  {
+    id: 'hermione_001',
+    name: 'Hermione Granger',
+    category: 'Character',
+    clues: [
+      'I\'m known for being the brightest witch of my age and always raising my hand in class.',
+      'I\'m best friends with Harry Potter and Ron Weasley at Hogwarts.',
+      'I started S.P.E.W. to advocate for house-elf rights and became Minister of Magic.'
+    ],
+  },
+  {
+    id: 'yoda_001',
+    name: 'Yoda',
+    category: 'Character',
+    clues: [
+      'I\'m a small, green alien who is one of the most powerful Jedi in the galaxy.',
+      'I trained Luke Skywalker and speak in a distinctive backward syntax.',
+      'I said "Do or do not, there is no try" and lived for 900 years.'
+    ],
+  },
+  {
+    id: 'spiderman_001',
+    name: 'Spider-Man',
+    category: 'Character',
+    clues: [
+      'I\'m a teenager who gained superpowers after being bitten by a radioactive spider.',
+      'I can climb walls, shoot webs, and have a "spider-sense" that warns of danger.',
+      'My uncle Ben taught me that "with great power comes great responsibility."'
+    ],
+  },
+  {
+    id: 'katniss_001',
+    name: 'Katniss Everdeen',
+    category: 'Character',
+    clues: [
+      'I volunteered to take my sister\'s place in a deadly televised competition.',
+      'I became the symbol of rebellion as the "Mockingjay" in a dystopian future.',
+      'I\'m an expert archer from District 12 in The Hunger Games trilogy.'
+    ],
+  },
+  {
+    id: 'wonder_001',
+    name: 'Wonder Woman',
+    category: 'Character',
+    clues: [
+      'I\'m an Amazonian princess and warrior with superhuman strength and speed.',
+      'I wield a Lasso of Truth and indestructible bracelets from my homeland.',
+      'My real name is Diana Prince, and I\'m one of DC Comics\' "Trinity" heroes.'
+    ],
+  },
+  {
+    id: 'elsa_001',
+    name: 'Elsa',
+    category: 'Character',
+    clues: [
+      'I have magical ice powers that I initially struggled to control.',
+      'I sang "Let It Go" while building an ice palace in the mountains.',
+      'I\'m the queen of Arendelle and Anna\'s older sister in a Disney film.'
+    ],
+  },
+  {
+    id: 'hannibal_001',
+    name: 'Hannibal Lecter',
+    category: 'Character',
+    clues: [
+      'I\'m a brilliant psychiatrist who is also a cannibalistic serial killer.',
+      'I helped FBI agent Clarice Starling catch another killer.',
+      'I was played by Anthony Hopkins in "The Silence of the Lambs" and ate people with "fava beans."'
+    ],
+  },
+  {
+    id: 'gatsby_001',
+    name: 'Jay Gatsby',
+    category: 'Character',
+    clues: [
+      'I\'m a mysterious millionaire who throws lavish parties in 1920s New York.',
+      'I\'m obsessed with recapturing a past romance with a woman named Daisy.',
+      'F. Scott Fitzgerald created me, and I say "old sport" frequently.'
+    ],
+  },
+  {
+    id: 'atticus_001',
+    name: 'Atticus Finch',
+    category: 'Character',
+    clues: [
+      'I\'m a lawyer in 1930s Alabama who defends a Black man falsely accused of rape.',
+      'My children Scout and Jem learn about justice and prejudice through my example.',
+      'I appear in "To Kill a Mockingbird" and am known for my moral courage.'
+    ],
+  },
+  {
+    id: 'elizabeth_001',
+    name: 'Elizabeth Bennet',
+    category: 'Character',
+    clues: [
+      'I\'m the second of five sisters in Regency-era England navigating marriage and society.',
+      'I initially dislike a proud gentleman named Mr. Darcy before falling in love with him.',
+      'Jane Austen created me as the protagonist of "Pride and Prejudice."'
+    ],
+  },
+  {
+    id: 'scrooge_001',
+    name: 'Ebenezer Scrooge',
+    category: 'Character',
+    clues: [
+      'I\'m a miserly businessman who hates Christmas and says "Bah, humbug!"',
+      'I\'m visited by three ghosts on Christmas Eve who show me past, present, and future.',
+      'Charles Dickens created me for "A Christmas Carol," and I ultimately reform my ways.'
+    ],
+  },
+  {
+    id: 'juliet_001',
+    name: 'Juliet Capulet',
+    category: 'Character',
+    clues: [
+      'I\'m a young woman from a wealthy Italian family who falls in love with my family\'s enemy.',
+      'I fake my death with a sleeping potion, leading to a tragic misunderstanding.',
+      'Shakespeare wrote my story with Romeo, and I famously asked "wherefore art thou?"'
+    ],
+  },
+  {
+    id: 'holden_001',
+    name: 'Holden Caulfield',
+    category: 'Character',
+    clues: [
+      'I\'m a cynical teenager who was expelled from prep school and wandered New York City.',
+      'I\'m obsessed with "phonies" and protecting childhood innocence.',
+      'J.D. Salinger created me as the narrator of "The Catcher in the Rye."'
+    ],
+  },
 ];
 
 export function getRandomPerson(excludeIds: string[] = []): Person {
