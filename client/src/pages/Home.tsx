@@ -3,6 +3,7 @@ import { useLocation } from 'wouter';
 import { Calendar, Zap, Users } from 'lucide-react';
 import StatsCard from '@/components/StatsCard';
 import ModeCard from '@/components/ModeCard';
+import CategoryPreview from '@/components/CategoryPreview';
 import { getUserStats, hasPlayedToday } from '@/lib/storage';
 import type { UserStats } from '@shared/types';
 
@@ -73,6 +74,10 @@ export default function Home() {
             </p>
           </div>
         )}
+
+        <div className="mt-12">
+          <CategoryPreview />
+        </div>
       </div>
     </div>
   );
