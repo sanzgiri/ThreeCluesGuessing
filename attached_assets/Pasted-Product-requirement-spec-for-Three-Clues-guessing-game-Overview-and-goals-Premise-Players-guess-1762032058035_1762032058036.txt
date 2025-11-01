@@ -1,0 +1,393 @@
+Product requirement spec for “Three Clues” guessing game
+
+Overview and goals
+
+Premise: Players guess a hidden person from up to three progressively specific clues. More points for earlier correct guesses.
+
+Platforms: Web app (PWA) and iOS app.
+
+Goals: Fast onboarding, daily retention via challenges, clean UI, low-maintenance content pipeline, and effortless deployment.
+
+Core gameplay and rules
+
+Game loop
+
+Select mode: Daily Challenge, Arcade, or Versus.
+
+Reveal clue 1: Broad hint. Player can guess or reveal clue 2.
+
+Reveal clue 2: Specific hint. Player can guess or reveal clue 3.
+
+Reveal clue 3: Obvious hint. Final guess required if none made.
+
+Result: Show answer, award points, update streak/leaderboard.
+
+Scoring
+
+Clue 1 correct: 3 points
+
+Clue 2 correct: 2 points
+
+Clue 3 correct: 1 point
+
+Incorrect guess: 0 points
+
+Streak bonus: +1 per consecutive daily win (caps at +7)
+
+Time bonus (optional mode): +1 if answer within threshold (e.g., 15s)
+
+Modes
+
+Daily challenge: Same person globally for 24 hours; one attempt per player.
+
+Arcade: Endless play from mixed categories; optional timers.
+
+Versus (async): Send a round to a friend; both play the same three clues. Fastest and earliest-correct wins.
+
+Content model and data
+
+Entities
+
+Person
+
+id: string
+
+name: string
+
+category: enum (“Historical Figure”, “Actor”, “Athlete”, “Character”, etc.)
+
+clues: array[string] length 3, ordered by difficulty
+
+imageUrl: string (optional)
+
+metadata: object (aliases, birth year, works)
+
+DailySeed
+
+dateISO: string (YYYY-MM-DD)
+
+personId: string
+
+checksum: string (integrity)
+
+User
+
+id: string (UUID)
+
+username: string (optional)
+
+stats: totalScore, streak, lastPlayedDate, achievements: array
+
+settings: theme, haptics, notifications
+
+JSON schema (example)
+
+{
+  "person": {
+    "id": "einstein_001",
+    "name": "Albert Einstein",
+    "category": "Historical Figure",
+    "clues": [
+      "I was born in the 19th century and transformed physics.",
+      "I formulated special and general relativity.",
+      "My first name is Albert."
+    ],
+    "imageUrl": "/images/einstein.jpg",
+    "metadata": {
+      "aliases": ["Einstein"],
+      "birthYear": 1879,
+      "works": ["Relativity"]
+    }
+  }
+}
+
+Content guidelines
+
+Clue gradients: Each clue must be non-ambiguous, escalating specificity: background → achievement → identity hint.
+
+Duplication checks: No two persons share identical clue sets.
+
+Quality gates: Lint tool validates clue length, profanity, and uniqueness.
+
+UX and UI
+
+Screens
+
+Home: Play buttons (Daily, Arcade, Versus), streak, last score, category preview.
+
+Round: Category label, progress indicator (Clue 1/3), reveal/guess controls, timer (optional).
+
+Guess entry: Autocomplete text field or multiple-choice variant (configurable).
+
+Results: Correct answer, earned points, share button, quick replay.
+
+Leaderboard/Achievements: Daily ranks, personal bests, badges.
+
+Interaction details
+
+Haptics: Light feedback on clue reveal, stronger on correct guess.
+
+Animations: Card flip for clues, confetti on win, subtle transitions (<200ms).
+
+Accessibility: Dynamic type, VoiceOver labels, color-contrast compliant.
+
+System architecture
+
+Target stack
+
+Web app (PWA): React + TypeScript, Vite, Tailwind (or SwiftUI-style design system), IndexedDB/localStorage for user state, service worker for offline daily seed.
+
+iOS native: Swift + SwiftUI, local JSON bundle for base content, Cloud (optional) for daily seed delivery.
+
+App modules
+
+Game engine: State machine (Idle → Clue1 → Clue2 → Clue3 → Result), scoring, streak logic.
+
+Content service: Loads person data, category filters, daily seed resolver.
+
+Versus service (optional): Shareable match payload via deep links.
+
+Persistence: User stats, streak, lastPlayedDate; sync-safe for web and iOS.
+
+Folder structure (monorepo-friendly)
+
+three-clues/
+  apps/
+    web/
+      src/
+        components/
+        screens/
+        services/
+        state/
+        assets/
+      public/
+      index.html
+      vite.config.ts
+    ios/
+      ThreeClues/
+        Models/
+        Views/
+        ViewModels/
+        Services/
+        Resources/
+        Tests/
+  packages/
+    content/
+      data/people/*.json
+      tools/validate-content.ts
+    docs/
+      spec.md
+  .github/
+    workflows/
+
+APIs and interfaces
+
+Content service (web or local)
+
+getDailyPerson(dateISO): returns Person
+
+getRandomPerson(category?): returns Person
+
+listCategories(): returns array
+
+Game engine
+
+startRound(mode, person): initializes state
+
+revealNextClue(): advances clue index
+
+submitGuess(text): returns result {correct: boolean, points: number}
+
+finalizeRound(): returns RoundSummary
+
+Persistence
+
+getUserStats(), setUserStats(stats)
+
+getLastPlayedDate(), setLastPlayedDate(dateISO)
+
+iOS app specifics
+
+SwiftUI navigation
+
+NavigationStack: Home → Round → Guess → Result → Leaderboard
+
+State: ObservableObject GameViewModel with phases and computed score
+
+Haptics
+
+UIImpactFeedbackGenerator(style: .light) on clue
+
+UINotificationFeedbackGenerator(.success) on correct guess
+
+Local content
+
+Bundle JSON files under Resources; decode with Codable.
+
+Optional remote daily seed via lightweight endpoint returning personId for date.
+
+GameKit (optional)
+
+Leaderboards: daily score, all-time score.
+
+Achievements: “First Clue Master”, “7-Day Streak”, “Lightning Fast”.
+
+Web app specifics
+
+PWA features
+
+Service worker precaches shell and daily seed JSON.
+
+Installable app on iOS/Android; offline arcade mode with locally cached content.
+
+Free hosting options
+
+GitHub Pages: Static hosting via gh-pages.
+
+Netlify or Vercel: Zero-config deploy from repository; environment variables for optional remote seed.
+
+Deployment instructions
+
+Web (GitHub Pages)
+
+Create repo: Push apps/web to GitHub.
+
+Build: npm i && npm run build
+
+Publish: Use gh-pages:
+
+npm i -D gh-pages
+
+Add script: "deploy": "gh-pages -d dist"
+
+Run npm run deploy
+
+Enable Pages: Ensure branch gh-pages is selected in repo settings.
+
+Test PWA: Open the URL, confirm install prompt and offline arcade mode.
+
+Web (Netlify)
+
+Connect repo: Choose apps/web folder as base.
+
+Build command: npm run build
+
+Publish directory: dist
+
+Deploy: Auto builds on push; verify HTTPS and PWA.
+
+Web (Vercel)
+
+Import repo: Framework auto-detected (Vite/React).
+
+Build & output: Defaults to npm run build and dist.
+
+Deploy: Use production URL; set any env vars under Project Settings.
+
+iOS (Xcode → TestFlight → App Store)
+
+Open project: apps/ios/ThreeClues.xcodeproj.
+
+Bundle ID & signing: Create App ID, enable capabilities (GameKit if used).
+
+Assets: App icons, launch screens in Asset Catalog.
+
+Build & run: On simulator and device; fix any signing issues.
+
+Archive: Product → Archive; upload via Organizer to App Store Connect.
+
+App Store Connect setup: Create app listing, screenshots, privacy labels.
+
+TestFlight: Add internal testers; distribute a build.
+
+Submission: Resolve review notes; ensure the app offers value beyond a website wrapper.
+
+Sample code prompts for code agents
+
+Web app prompt
+
+Goal: Generate a React + TypeScript PWA for the Three Clues game.
+
+Prompt:
+
+Build a React + TypeScript PWA called “Three Clues”.
+Requirements:
+- Vite + Tailwind; accessible components.
+- Game state machine with phases: idle, clue1, clue2, clue3, result.
+- Scoring: 3/2/1/0 points per clue stage, streak bonus (+1 up to +7).
+- Content service that loads local JSON people data (id, name, category, clues[3]).
+- Daily Challenge: derive seeded person by date; one attempt per day stored in localStorage.
+- Arcade Mode: random person per round; optional timer.
+- Screens: Home, Round, Guess, Result, Leaderboard.
+- PWA: service worker, offline arcade mode, manifest.json.
+- Folder structure under apps/web as specified in spec.
+- Include unit tests for scoring and state transitions (Vitest).
+Output the full codebase and setup instructions including build and deploy to GitHub Pages.
+
+iOS app prompt
+
+Goal: Generate a SwiftUI app with local JSON content and GameKit optional.
+
+Prompt:
+
+Build a SwiftUI iOS app “Three Clues”.
+Requirements:
+- Models: Person (Codable), UserStats.
+- GameViewModel (ObservableObject) with phases and scoring.
+- Views: HomeView, RoundView (clue reveal, guess), ResultView, LeaderboardView.
+- Haptics: light on clue, success on correct guess.
+- Local JSON content bundled in Resources; decoder service.
+- Daily Challenge seeded by date; store lastPlayedDate and streak with UserDefaults.
+- Optional GameKit integration hooks; compile even if GameKit not configured.
+- Unit tests for scoring and streak logic (XCTest).
+Provide Xcode project structure and instructions for TestFlight distribution.
+
+Non-functional requirements
+
+Performance: Initial load < 2s on mid-range devices; interactions < 200ms.
+
+Accessibility: WCAG AA color contrast, VoiceOver labels, Dynamic Type support.
+
+Privacy: No PII required; optional username stored locally.
+
+Security: Content integrity via checksum (optional), no unsafe remote code.
+
+Internationalization: Strings in a localization file for future languages.
+
+Acceptance criteria
+
+Gameplay:
+
+Users can complete a round with three clues and submit a guess.
+
+Scores and streaks persist across sessions.
+
+Daily Challenge prevents multiple plays per day.
+
+Content:
+
+Minimum 100 persons across at least 4 categories.
+
+Clues validated for gradient difficulty and uniqueness.
+
+Web:
+
+PWA installable; arcade mode works offline.
+
+Deployed successfully on a free hosting service.
+
+iOS:
+
+Runs on iOS 16+ devices.
+
+TestFlight build distributed; passes App Store review with non-wrapper functionality.
+
+Roadmap (optional)
+
+Phase 1: MVP (single-player, daily + arcade, local content).
+
+Phase 2: Leaderboards, achievements, Versus mode with deep links.
+
+Phase 3: Content packs, live events, creator mode for user-submitted clues.
+
+If you want, I can also generate a starter content pack (JSON with 50–100 sample entries) and a simple content linter script to enforce clue quality before you ship.
