@@ -1,5 +1,5 @@
 import { Badge } from '@/components/ui/badge';
-import { categories } from '@/data/people';
+import { categories } from '@/data/peopleHelpers';
 
 export default function CategoryPreview() {
   return (

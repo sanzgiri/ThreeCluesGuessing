@@ -1,7 +1,7 @@
 import { useState } from 'react';
 import { Input } from '@/components/ui/input';
 import { Button } from '@/components/ui/button';
-import { people } from '@/data/people';
+import { people } from '@/data/peopleHelpers';
 
 interface GuessInputProps {
   onSubmit: (guess: string) => void;

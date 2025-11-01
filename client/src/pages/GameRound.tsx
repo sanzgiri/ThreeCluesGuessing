@@ -8,7 +8,7 @@ import GuessInput from '@/components/GuessInput';
 import ResultCard from '@/components/ResultCard';
 import Confetti from '@/components/Confetti';
 import StreakMilestone from '@/components/StreakMilestone';
-import { getDailyPerson, getRandomPerson, findPersonByName } from '@/data/people';
+import { getDailyPerson, getRandomPerson, findPersonByName } from '@/data/peopleHelpers';
 import { getUserStats, setUserStats, getTodayString, setDailyPlayedDate } from '@/lib/storage';
 import type { Person, GamePhase, RoundResult } from '@shared/types';
 
