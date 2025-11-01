@@ -7,6 +7,7 @@ import ProgressIndicator from '@/components/ProgressIndicator';
 import GuessInput from '@/components/GuessInput';
 import ResultCard from '@/components/ResultCard';
 import Confetti from '@/components/Confetti';
+import StreakMilestone from '@/components/StreakMilestone';
 import { getDailyPerson, getRandomPerson, findPersonByName } from '@/data/people';
 import { getUserStats, setUserStats, getTodayString, setDailyPlayedDate } from '@/lib/storage';
 import type { Person, GamePhase, RoundResult } from '@shared/types';
@@ -22,6 +23,8 @@ export default function GameRound() {
   const [revealedClues, setRevealedClues] = useState<string[]>([]);
   const [result, setResult] = useState<RoundResult | null>(null);
   const [showConfetti, setShowConfetti] = useState(false);
+  const [showMilestone, setShowMilestone] = useState(false);
+  const [milestoneStreak, setMilestoneStreak] = useState(0);
 
   useEffect(() => {
     if (mode === 'daily') {
@@ -82,12 +85,13 @@ export default function GameRound() {
       setTimeout(() => setShowConfetti(false), 3000);
     }
 
+    const newStreak = correct ? stats.streak + 1 : 0;
     const newStats = {
       ...stats,
       totalScore: stats.totalScore + totalPoints,
       gamesPlayed: stats.gamesPlayed + 1,
-      streak: correct ? stats.streak + 1 : 0,
-      bestStreak: correct ? Math.max(stats.bestStreak, stats.streak + 1) : stats.bestStreak,
+      streak: newStreak,
+      bestStreak: correct ? Math.max(stats.bestStreak, newStreak) : stats.bestStreak,
       lastPlayedDate: getTodayString(),
     };
 
@@ -95,6 +99,13 @@ export default function GameRound() {
 
     if (mode === 'daily') {
       setDailyPlayedDate(getTodayString());
+    }
+
+    if (correct && (newStreak === 3 || newStreak === 7 || newStreak === 30)) {
+      setTimeout(() => {
+        setMilestoneStreak(newStreak);
+        setShowMilestone(true);
+      }, 2000);
     }
   };
 
@@ -124,6 +135,12 @@ export default function GameRound() {
   return (
     <div className="min-h-screen bg-background">
       {showConfetti && <Confetti />}
+      {showMilestone && (
+        <StreakMilestone
+          streak={milestoneStreak}
+          onClose={() => setShowMilestone(false)}
+        />
+      )}
       
       <div className="max-w-3xl mx-auto px-4 py-6">
         <div className="flex items-center justify-between mb-8">
