@@ -1,6 +1,31 @@
-node_modules
-dist
-.DS_Store
-server/public
-vite.config.ts.*
+node_modules/
+dist/
+dist-ssr/
+server/public/
+
+# Build artifacts
+coverage/
+.turbo/
+*.log
 *.tar.gz
+
+# Environment files
+.env
+.env.*
+
+# Editor and OS files
+.DS_Store
+.idea/
+.vscode/
+
+# Hosting/platform folders
+.vercel/
+.render/
+
+# Replit remnants
+.replit
+.config/
+.local/
+
+# Misc
+*.swp
