@@ -10,46 +10,19 @@ interface GuessInputProps {
 
 export default function GuessInput({ onSubmit, disabled = false }: GuessInputProps) {
   const [guess, setGuess] = useState('');
-  const [suggestions, setSuggestions] = useState<string[]>([]);
-  const [showSuggestions, setShowSuggestions] = useState(false);
 
   const handleInputChange = (value: string) => {
     setGuess(value);
-    
-    if (value.length > 0) {
-      const filtered = people
-        .map(p => p.name)
-        .filter(name => name.toLowerCase().includes(value.toLowerCase()))
-        .slice(0, 5);
-      setSuggestions(filtered);
-      setShowSuggestions(filtered.length > 0);
-    } else {
-      setSuggestions([]);
-      setShowSuggestions(false);
-    }
   };
 
   const handleSubmit = (value: string) => {
     if (value.trim()) {
       const trimmedValue = value.trim();
-      // Hide suggestions first to prevent UI flicker
-      setShowSuggestions(false);
-      setSuggestions([]);
       // Call parent submit handler
       onSubmit(trimmedValue);
       // Clear input after submission
       setGuess('');
     }
-  };
-
-  const handleSuggestionClick = (name: string) => {
-    // Hide suggestions immediately
-    setShowSuggestions(false);
-    setSuggestions([]);
-    // Submit directly without setting state first (prevents race condition)
-    onSubmit(name.trim());
-    // Clear input
-    setGuess('');
   };
 
   return (
@@ -68,29 +41,7 @@ export default function GuessInput({ onSubmit, disabled = false }: GuessInputPro
             autoComplete="off"
             autoFocus
             aria-label="Enter your guess for the person"
-            aria-describedby={showSuggestions ? "guess-suggestions" : undefined}
           />
-          {showSuggestions && (
-            <div 
-              id="guess-suggestions"
-              role="listbox"
-              aria-label="Suggested names"
-              className="absolute top-full left-0 right-0 mt-1 bg-popover border border-popover-border rounded-lg shadow-lg max-h-60 overflow-y-auto z-50"
-            >
-              {suggestions.map((name, index) => (
-                <button
-                  key={index}
-                  role="option"
-                  onClick={() => handleSuggestionClick(name)}
-                  className="w-full px-4 py-3 text-left hover-elevate active-elevate-2 text-sm"
-                  data-testid={`suggestion-${index}`}
-                  aria-label={`Select ${name}`}
-                >
-                  {name}
-                </button>
-              ))}
-            </div>
-          )}
         </div>
         <Button
           onClick={() => handleSubmit(guess)}

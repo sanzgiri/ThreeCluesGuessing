@@ -44,7 +44,7 @@ export default function GameRound() {
 
   const handleRevealNextClue = () => {
     if (!person) return;
-    
+
     if (currentClue === 0) {
       setPhase('clue2');
       setRevealedClues([...revealedClues, person.clues[1]]);
@@ -61,10 +61,25 @@ export default function GameRound() {
 
     const foundPerson = findPersonByName(guess);
     const correct = foundPerson?.id === person.id;
-    
+
+    if (!correct) {
+      if (currentClue < 2) {
+        // Reveal next clue
+        const nextClueIndex = currentClue + 1;
+        setCurrentClue(nextClueIndex);
+        setRevealedClues([...revealedClues, person.clues[nextClueIndex]]);
+        setPhase(nextClueIndex === 1 ? 'clue2' : 'clue3');
+        // Optional: Add toast or shake effect here
+        return;
+      }
+      // If we're here, they failed the 3rd clue (index 2)
+    }
+
     const clueLevel = (currentClue + 1) as 1 | 2 | 3;
+    // Points: 1st clue (level 1) -> 3 pts, 2nd (level 2) -> 2 pts, 3rd (level 3) -> 1 pt
+    // If incorrect after 3rd clue, correct is false, so basePoints is 0.
     const basePoints = correct ? (4 - clueLevel) : 0;
-    
+
     const stats = getUserStats();
     const streakBonus = Math.min(stats.streak, 7);
     const totalPoints = basePoints + (correct ? streakBonus : 0);
@@ -141,8 +156,9 @@ export default function GameRound() {
           onClose={() => setShowMilestone(false)}
         />
       )}
-      
+
       <div className="max-w-3xl mx-auto px-4 py-6">
+
         <header className="flex items-center justify-between mb-8">
           <div className="flex items-center gap-4">
             <span className="text-sm font-medium text-muted-foreground uppercase tracking-wide" role="status" aria-label={`Category: ${person.category}`}>
@@ -167,37 +183,21 @@ export default function GameRound() {
         )}
 
         <div className="space-y-6">
-          {phase !== 'result' ? (
-            <>
-              {revealedClues.map((clue, index) => (
-                <ClueCard
-                  key={index}
-                  clueNumber={index + 1}
-                  clueText={clue}
-                  revealed={true}
-                />
-              ))}
 
-              <div className="py-8">
-                <GuessInput onSubmit={handleGuess} />
-              </div>
+          {revealedClues.map((clue, index) => (
+            <ClueCard
+              key={index}
+              clueNumber={index + 1}
+              clueText={clue}
+              revealed={true}
+            />
+          ))}
 
-              {currentClue < 2 && (
-                <div className="text-center">
-                  <Button
-                    variant="outline"
-                    size="lg"
-                    onClick={handleRevealNextClue}
-                    data-testid="button-reveal-clue"
-                    aria-label={`Reveal clue ${currentClue + 2} of 3`}
-                  >
-                    Reveal Next Clue
-                    <ArrowRight className="w-4 h-4 ml-2" />
-                  </Button>
-                </div>
-              )}
-            </>
-          ) : result && (
+          <div className={`py-8 ${phase === 'result' ? 'hidden' : ''}`}>
+            <GuessInput onSubmit={handleGuess} />
+          </div>
+
+          {phase === 'result' && result && (
             <>
               <ResultCard
                 correct={result.correct}
@@ -222,5 +222,6 @@ export default function GameRound() {
         </div>
       </div>
     </div>
+
   );
 }
