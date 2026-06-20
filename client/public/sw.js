@@ -3,9 +3,14 @@
  *  - Precache the app shell on install.
  *  - Navigations: network-first, fall back to cached index.html when offline.
  *  - Static assets (hashed JS/CSS/images/fonts): cache-first (they're immutable).
+ *
+ * Auto-update: VERSION is replaced with the build id at build time, so each
+ * deploy produces a byte-different sw.js. The browser then detects an update,
+ * installs the new worker (skipWaiting), takes control (clients.claim), and the
+ * page reloads once via the controllerchange handler in registerSW.ts.
  */
 
-const VERSION = 'v1';
+const VERSION = '__BUILD_ID__';
 const SHELL_CACHE = `three-clues-shell-${VERSION}`;
 const RUNTIME_CACHE = `three-clues-runtime-${VERSION}`;
 
@@ -42,6 +47,13 @@ self.addEventListener('activate', (event) => {
       )
       .then(() => self.clients.claim()),
   );
+});
+
+// Allow the page to tell a waiting worker to activate immediately.
+self.addEventListener('message', (event) => {
+  if (event.data === 'SKIP_WAITING') {
+    self.skipWaiting();
+  }
 });
 
 self.addEventListener('fetch', (event) => {
