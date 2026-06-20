@@ -83,16 +83,6 @@ export function findPersonByName(name: string): Person | undefined {
   return undefined;
 }
 
-/** Autocomplete suggestions for the guess input. */
-export function suggestPeople(query: string, limit = 6): Person[] {
-  const normalized = normalize(query);
-  if (!normalized) return [];
-  return fuse
-    .search(query)
-    .slice(0, limit)
-    .map((r) => r.item);
-}
-
 function normalize(value: string): string {
   return value
     .toLowerCase()

@@ -30,7 +30,7 @@ Points: 3 (Clue 1), 2 (Clue 2), 1 (Clue 3). Streak bonus adds +1 per consecutive
 
 ## Gameplay Features
 
-- **Smart guessing** — autocomplete suggestions (typo- and accent-tolerant) with keyboard navigation; unrelated input is correctly rejected rather than silently matched.
+- **Smart guessing** — forgiving free-text matching (typo-, accent-, and last-name-tolerant) that rejects unrelated input instead of silently matching. No autocomplete, so the answer is never given away.
 - **Progressive clues** — a wrong guess reveals the next, more specific clue (with shake + toast feedback) and lists what you've already tried.
 - **In-round timer** — every round is timed; your solve time appears in results and shares, and faster solves win versus ties.
 - **Give up** — reveal the answer at any time without guessing blindly.

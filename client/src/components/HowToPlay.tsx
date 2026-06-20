@@ -34,7 +34,7 @@ export default function HowToPlay() {
             <span className="flex h-6 w-6 shrink-0 items-center justify-center rounded-full bg-primary text-xs font-bold text-primary-foreground">
               1
             </span>
-            <span>Read the first clue and type your guess. Autocomplete will help you.</span>
+            <span>Read the first clue and type the name you think it is. Spelling doesn't have to be perfect.</span>
           </li>
           <li className="flex gap-3">
             <span className="flex h-6 w-6 shrink-0 items-center justify-center rounded-full bg-primary text-xs font-bold text-primary-foreground">
