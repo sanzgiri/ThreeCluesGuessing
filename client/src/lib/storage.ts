@@ -9,15 +9,29 @@ const defaultStats: UserStats = {
   lastPlayedDate: null,
   gamesPlayed: 0,
   bestStreak: 0,
+  wins: 0,
+  firstClueSolves: 0,
+  fastestSolveMs: null,
+  versusWins: 0,
+  achievements: [],
 };
+
+/** Merge stored stats over defaults so older saves gain new fields. */
+function normalize(stats: Partial<UserStats>): UserStats {
+  return {
+    ...defaultStats,
+    ...stats,
+    achievements: stats.achievements ?? [],
+  };
+}
 
 export function getUserStats(): UserStats {
   try {
     const stored = localStorage.getItem(STATS_KEY);
-    if (!stored) return defaultStats;
-    return JSON.parse(stored);
+    if (!stored) return { ...defaultStats };
+    return normalize(JSON.parse(stored));
   } catch {
-    return defaultStats;
+    return { ...defaultStats };
   }
 }
 

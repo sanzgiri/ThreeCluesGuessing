@@ -24,9 +24,25 @@ three-clues/
 |-----------------|---------|
 | **Daily**       | One shared puzzle per day, streak + milestone tracking |
 | **Arcade**      | Endless random puzzles, perfect for practice |
-| **Future**      | Versus + social modes planned |
+| **Versus**      | Beat a puzzle, then send a friend a link to duel on the same person |
 
 Points: 3 (Clue 1), 2 (Clue 2), 1 (Clue 3). Streak bonus adds +1 per consecutive win (cap +7).
+
+## Gameplay Features
+
+- **Smart guessing** — autocomplete suggestions (typo- and accent-tolerant) with keyboard navigation; unrelated input is correctly rejected rather than silently matched.
+- **Progressive clues** — a wrong guess reveals the next, more specific clue (with shake + toast feedback) and lists what you've already tried.
+- **In-round timer** — every round is timed; your solve time appears in results and shares, and faster solves win versus ties.
+- **Give up** — reveal the answer at any time without guessing blindly.
+- **Shareable results** — Wordle-style emoji grid copied to clipboard (or the native share sheet on mobile).
+- **Versus duels** — challenge links encode the puzzle + your score in the URL (no account or backend needed); the opponent plays the same person and gets a head-to-head comparison.
+- **Achievements** — 10 unlockable badges (first win, first-clue solve, streaks, speed, versus wins, and more) with unlock toasts and a progress dialog.
+- **Streaks & milestones** — daily streak, best streak, and celebratory milestones at 3/7/30.
+- **Dark mode** — persisted light/dark toggle.
+- **Installable PWA** — web app manifest, icons, and a service worker for offline play plus an in-app “Install” button.
+- **How to Play** — built-in rules dialog.
+
+The daily puzzle is deterministic per calendar day and rotates through every person before repeating.
 
 ## Local Development
 
@@ -88,8 +104,9 @@ services:
 
 ## Future Enhancements
 
-- User accounts + cloud persistence
-- Versus and social challenges
-- Themed content packs, achievements, push notifications, and PWA install support
+- User accounts + cloud persistence (leaderboards, cross-device sync)
+- Real-time live versus instead of async links
+- Themed content packs and seasonal events
+- Push notifications for daily reminders
 
 Happy guessing! 🎯

@@ -9,6 +9,9 @@ export default function ResultCardExample() {
         points={3}
         streakBonus={2}
         totalPoints={5}
+        clueLevel={1}
+        clueOutcomes={['solved', 'gaveup', 'gaveup']}
+        mode="arcade"
       />
       <ResultCard
         correct={false}
@@ -16,6 +19,9 @@ export default function ResultCardExample() {
         points={0}
         streakBonus={0}
         totalPoints={0}
+        clueLevel={null}
+        clueOutcomes={['wrong', 'wrong', 'wrong']}
+        mode="daily"
       />
     </div>
   );
